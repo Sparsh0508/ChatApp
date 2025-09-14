@@ -41,7 +41,7 @@ function Login() {
       }
     };
   return (
-    <div className="flex flex-col items-center justify-center mix-w-full mx-auto">
+    <div className="flex flex-col items-center justify-center mix-w-full mx-auto h-full">
       <div className="w-full p-6 rounded-lg shadow-lg bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-3xl font-bold  text-gray-300 text-center">
           Login
@@ -63,7 +63,7 @@ function Login() {
               onChange={handelInput}
               placeholder="Enter your email"
               required
-              className="w-full input input-bordered h-10"
+              className="w-full input input-bordered h-10 text-white"
             />
           </div>
           <div>
@@ -78,7 +78,7 @@ function Login() {
               onChange={handelInput}
               placeholder="Enter your password"
               required
-              className="w-full input input-bordered h-10"
+              className="w-full input input-bordered h-10 text-white"
             />
           </div>
           <button
@@ -100,7 +100,7 @@ function Login() {
             Don't have an Acount ?{" "}
             <Link to={"/register"}>
               <span
-                className="text-gray-950 
+                className="text-white
                             font-bold underline cursor-pointer
                              hover:text-green-950"
               >

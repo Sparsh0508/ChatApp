@@ -68,7 +68,7 @@ console.log(inputData);
                                 onChange={handelInput}
                                 placeholder='Enter Full Name'
                                 required
-                                className='w-full input input-bordered h-10' />
+                                className='w-full input input-bordered h-10 text-white' />
                         </div>
                         <div>
                             <label className='label p-2' >
@@ -80,7 +80,7 @@ console.log(inputData);
                                 onChange={handelInput}
                                 placeholder='Enter UserName'
                                 required
-                                className='w-full input input-bordered h-10' />
+                                className='w-full input input-bordered h-10 text-white' />
                         </div>
                         <div>
                             <label className='label p-2' >
@@ -92,7 +92,7 @@ console.log(inputData);
                                 onChange={handelInput}
                                 placeholder='Enter email'
                                 required
-                                className='w-full input input-bordered h-10' />
+                                className='w-full input input-bordered h-10 text-white' />
                         </div>
                         <div>
                             <label className='label p-2' >
@@ -104,7 +104,7 @@ console.log(inputData);
                                 onChange={handelInput}
                                 placeholder='Enter password'
                                 required
-                                className='w-full input input-bordered h-10' />
+                                className='w-full input input-bordered h-10 text-white' />
                         </div>
                         <div>
                             <label className='label p-2' >
@@ -112,17 +112,17 @@ console.log(inputData);
                             </label>
                             <input
                                 id='confpassword'
-                                type='text'
+                                type='password'
                                 onChange={handelInput}
                                 placeholder='Enter Confirm password'
                                 required
-                                className='w-full input input-bordered h-10' />
+                                className='w-full input input-bordered h-10 text-white' />
                         </div>
                         
                         <div
                          id='gender' className="flex gap-2 mt-3">
                         <label className="cursor-pointer label flex gap-2">
-                        <span className="label-text font-semibold text-gray-950">male</span>
+                        <span className="label-text font-semibold text-white">male</span>
                         <input 
                         onChange={()=>selectGender('male')}
                         checked={inputData.gender === 'male'}
@@ -130,7 +130,7 @@ console.log(inputData);
                         className="checkbox checkbox-info"/>
                         </label>
                         <label className="cursor-pointer label flex gap-2">
-                        <span className="label-text font-semibold text-gray-950">female</span>
+                        <span className="label-text font-semibold text-white">female</span>
                         <input 
                         checked={inputData.gender === 'female'}
                         onChange={()=>selectGender('female')}
@@ -153,7 +153,7 @@ console.log(inputData);
                          text-gray-800'>
                             Dont have an Acount ? <Link to={'/login'}>
                                 <span
-                                    className='text-gray-950 
+                                    className='text-white
                             font-bold underline cursor-pointer
                              hover:text-green-950'>
                                     Login Now!!

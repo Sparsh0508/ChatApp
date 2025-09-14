@@ -27,34 +27,44 @@ const Sidebar = ({ onSelectUser }) => {
     // const isOnline = nowOnline.map(userId => onlineUser.includes(userId));f 
     const isOnline = nowOnline.map(userId => (onlineUser || []).includes(userId));
 
-    useEffect(()=>{
-        socket?.on("newMessage",(newMessage)=>{
-            setNewMessageUsers(newMessage)
-        })
-        return ()=> socket?.off("newMessage");
-    },[socket,messages])
-
-    //show user with u chatted
     useEffect(() => {
-        const chatUserHandler = async () => {
-            setLoading(true)
-            try {
-                const chatters = await axios.get(`/api/user/currentchatters`)
-                const data = chatters.data;
-                if (data.success === false) {
-                    setLoading(false)
-                    console.log(data.message);
-                }
-                setLoading(false)
-                setChatUser(data)
+  if (!socket) return;
 
-            } catch (error) {
-                setLoading(false)
-                console.log(error);
-            }
-        }
-        chatUserHandler()
-    }, [])
+  const handleNewMessage = (newMessage) => {
+    setNewMessageUsers(newMessage);
+
+    // If the user is not already in chatUser, fetch chatUser list again
+    const exists = chatUser.some(u => u._id === newMessage.senderId || u._id === newMessage.reciverId);
+    if (!exists) {
+      fetchChatUsers();
+    }
+  };
+
+  socket.on("newMessage", handleNewMessage);
+
+  return () => socket.off("newMessage", handleNewMessage);
+}, [socket, chatUser]);
+
+// extract fetch function so it can be reused
+const fetchChatUsers = async () => {
+  setLoading(true);
+  try {
+    const chatters = await axios.get(`/api/user/currentchatters`);
+    const data = chatters.data;
+    if (data.success !== false) {
+      setChatUser(data);
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+useEffect(() => {
+  fetchChatUsers();
+}, []);
+
     
     //show user from the search result
     const handelSearchSubmit = async (e) => {
